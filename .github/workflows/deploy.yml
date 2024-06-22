@@ -1,0 +1,31 @@
+name: Build & test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  deploy:
+    needs: build
+    runs-on: 'ubuntu-latest'
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+      - uses: 'actions/checkout@v4'
+
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          project_id: 'cook-my-ai'
+          workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
+
+      - id: 'deploy'
+        uses: 'google-github-actions/deploy-cloud-functions@v3'
+        timeout-minutes: 10
+        with:
+          name: 'cook-my-ai'
+          runtime: 'nodejs22'
