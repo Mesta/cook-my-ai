@@ -1,4 +1,8 @@
 *.iml
+*.local
 .idea
 dist
-node_modules
+lib/**/*.js
+lib/**/*.js.map
+node_modules/
+typings/
