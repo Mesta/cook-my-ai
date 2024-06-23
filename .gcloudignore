@@ -1,0 +1,10 @@
+.gcloudignore
+.git
+.gitignore
+.idea
+Cook My AI.iml
+LICENSE
+README.md
+biome.json
+node_modules
+tsconfig.json
