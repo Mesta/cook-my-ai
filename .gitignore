@@ -1,7 +1,10 @@
 *.iml
+*.js
 *.local
+*.log
 .idea
 dist
+functions/lib/
 lib/**/*.js
 lib/**/*.js.map
 node_modules/

@@ -1,8 +1,7 @@
+import type { CloudEvent } from "@google-cloud/functions-framework";
 import { generateMenu } from "./chatgpt";
-import { insertMealsInNotion } from "./notion";
 
-(async () => {
+exports.prepareMenu = async (): Promise<void> => {
 	const menu = await generateMenu();
-	await Promise.all(menu.map(insertMealsInNotion));
 	console.log(menu);
-})();
+};

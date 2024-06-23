@@ -1,1 +1,1 @@
-# cook-my-ai
+# chef-ai

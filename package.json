@@ -1,7 +1,20 @@
 {
-	"name": "cook-me-well",
+	"name": "chef-ai",
 	"version": "1.0.0",
+	"private": true,
+	"main": "src/index.js",
+	"engines": {
+		"node": "20"
+	},
+	"scripts": {
+		"deploy": "gcloud functions deploy chef-ai --gen2 --region=europe-west1 --runtime=nodejs20 --source=. --entry-point=prepareMenu --trigger-event=providers/cloud.pubsub/eventTypes/topic.publish --trigger-resource=scheduler"
+	},
 	"devDependencies": {
-		"@biomejs/biome": "^1.8.1"
+		"@biomejs/biome": "^1.8.1",
+		"typescript": "^5.5.2"
+	},
+	"dependencies": {
+		"@google-cloud/functions-framework": "^3.4.0",
+		"openai": "^4.52.0"
 	}
 }
